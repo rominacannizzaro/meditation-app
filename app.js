@@ -11,7 +11,6 @@ const app = () => {
     const timeSelect = document.querySelectorAll(".time-select button");
     //Get the length of the oultine 
     const outlineLength = outline.getTotalLength();  
-    console.log(outlineLength);
     //Duration 
     let fakeDuration = 600; // set up a "fake" duration, a default duration. When the time selected by the user expires, the song will stop.
     }
