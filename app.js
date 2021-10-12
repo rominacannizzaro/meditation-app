@@ -13,6 +13,11 @@ const app = () => {
     const outlineLength = outline.getTotalLength();  
     //Duration 
     let fakeDuration = 600; // set up a "fake" duration, a default duration. When the time selected by the user expires, the song will stop.
+    
+    //Animation effect of the outline
+    outline.style.strokeDasharray = outlineLength;
+    outline.style.strokeDashoffset = outlineLength;
+
     }
 
     app();
