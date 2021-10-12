@@ -58,6 +58,14 @@ const app = () => {
 
     //Animate the text (countdown timer)
         timeDisplay.textContent = `${minutes}:${seconds}`;
+    
+    //Stop when time hits zero
+    if (currentTime >= fakeDuration) {
+        song.pause();
+        song.currentTime = 0;
+        play.src = "./svg/play.svg";
+        video.pause();
+        }
     };
 };
 
