@@ -18,7 +18,12 @@ const app = () => {
     outline.style.strokeDasharray = outlineLength;
     outline.style.strokeDashoffset = outlineLength;
 
-     //Create a function to pause and play sound
+    //Play sound
+    play.addEventListener("click", () => {
+        checkPlaying(song);
+    });
+
+    //Create a function to pause and play sound
      const checkPlaying = song => {
         if (song.paused) {
             song.play();
@@ -31,11 +36,21 @@ const app = () => {
         }
     };
 
-    //Play sound
-    play.addEventListener("click", () => {
-        checkPlaying(song);
-    });
+    //Keep track of time along the circle
+    song.ontimeupdate = () => {
+        let currentTime = song.currentTime;
+        let elapsed = fakeDuration - currentTime;
+        let seconds = Math.floor(elapsed % 60);
+        let minutes = Math.floor(elapsed / 60);
+    
 
-    }
+    //Animate the circle
+    let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
+    outline.style.strokeDashoffset = progress;
 
-    app();
+    //Animate the text (countdown timer)
+        timeDisplay.textContent = `${minutes}:${seconds}`;
+    };
+};
+
+app();
